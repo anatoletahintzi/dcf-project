@@ -19,7 +19,7 @@ PAGE_HEAD = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Teardown &mdash; Challenger Auto Valuations</title>
+<title>Anatole Tahintzi &mdash; Teardown: Challenger Auto Valuations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -221,6 +221,9 @@ PAGE_HEAD = """<!DOCTYPE html>
   <div class="eyebrow">// TEARDOWN &mdash; VALUATION LOGS</div>
   <h1>Challenger Auto, Priced.</h1>
   <p>DCF models on the EV/challenger auto names I actually have a view on. I write the thesis and set the assumptions; the model math and this page are AI-assisted. Every number below traces back to an assumption you can see &mdash; nothing is hidden in a black box.</p>
+  <div style="margin-top:16px;padding:10px 16px;background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.4);border-radius:2px;color:var(--amber);font-size:13px;display:inline-block;">
+    Actively building, started July 2, 2026 &mdash; financial data pipeline is live and automated; investment theses are still being written company by company.
+  </div>
 </header>
 <main>
 """
