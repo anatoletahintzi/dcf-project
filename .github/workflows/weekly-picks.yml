@@ -1,0 +1,41 @@
+name: Weekly AI picks refresh
+
+on:
+  schedule:
+    - cron: '0 13 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate this week's AI picks
+        run: python3 weekly_picks.py
+
+      - name: Run DCF on curated companies
+        run: python3 dcf_engine.py companies.json results.json
+
+      - name: Run DCF on AI picks
+        run: python3 dcf_engine.py ai_picks.json ai_results.json
+
+      - name: Rebuild the site
+        run: python3 generate_site.py
+
+      - name: Commit and push if anything changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html results.json ai_results.json ai_picks.json
+          git diff --staged --quiet || git commit -m "Weekly AI picks refresh"
+          git push
