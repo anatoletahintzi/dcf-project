@@ -6,56 +6,223 @@
 <title>Teardown &mdash; Challenger Auto Valuations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-  :root { --bg: #0B1B22; --bg-panel: #0F2530; --line: #1E3D49; --cyan: #5EEAD4; --amber: #F5A623; --text: #DCEBEE; --text-dim: #7FA3AC; }
+  :root {
+    --bg: #0B1B22;
+    --bg-panel: #0F2530;
+    --line: #1E3D49;
+    --cyan: #5EEAD4;
+    --amber: #F5A623;
+    --text: #DCEBEE;
+    --text-dim: #7FA3AC;
+    --red: #E8664B;
+    --green: #6EE7A8;
+  }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 48px 48px; background-attachment: fixed; color: var(--text); font-family: 'Space Mono', monospace; line-height: 1.5; }
-  h1, h2, h3 { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: 0.03em; }
-  header { padding: 64px 24px 40px; max-width: 1000px; margin: 0 auto; border-bottom: 1px solid var(--line); }
-  header .eyebrow { color: var(--cyan); font-size: 13px; letter-spacing: 0.15em; margin-bottom: 12px; }
-  header h1 { font-size: 56px; font-weight: 700; margin: 0 0 12px; color: var(--text); }
-  header p { color: var(--text-dim); max-width: 620px; font-size: 15px; }
-  main { max-width: 1000px; margin: 0 auto; padding: 40px 24px 100px; }
-  .card { background: var(--bg-panel); border: 1px solid var(--line); border-radius: 2px; margin-bottom: 32px; }
-  .card-head { display: flex; justify-content: space-between; align-items: baseline; padding: 24px 28px 16px; border-bottom: 1px solid var(--line); }
-  .ticker-block .ticker { font-size: 32px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: var(--cyan); }
-  .ticker-block .name { color: var(--text-dim); font-size: 13px; }
-  .fair-value { text-align: right; }
-  .fair-value .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
-  .fair-value .num { font-size: 28px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; }
-  .flag { display: inline-block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; margin-top: 6px; }
-  .flag.ai { background: rgba(245, 166, 35, 0.12); color: var(--amber); border: 1px solid rgba(245, 166, 35, 0.4); }
-  .flag.user { background: rgba(94, 234, 212, 0.1); color: var(--cyan); border: 1px solid rgba(94, 234, 212, 0.35); }
-  .thesis { padding: 20px 28px; font-size: 14px; border-bottom: 1px solid var(--line); background: rgba(0,0,0,0.15); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-attachment: fixed;
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    line-height: 1.5;
+  }
+  h1, h2, h3, .display {
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  header {
+    padding: 64px 24px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--line);
+  }
+  header .eyebrow {
+    color: var(--cyan);
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: var(--text);
+  }
+  header p {
+    color: var(--text-dim);
+    max-width: 620px;
+    font-size: 15px;
+  }
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 24px 100px;
+  }
+  .summary-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+  .summary-title {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .card {
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 24px 28px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .ticker-block .ticker {
+    font-size: 32px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 0.02em;
+  }
+  .ticker-block .name {
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+  .fair-value {
+    text-align: right;
+  }
+  .fair-value .label {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .fair-value .num {
+    font-size: 28px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+  }
+  .fair-value .price-compare {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+  .flag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-top: 6px;
+  }
+  .flag.ai {
+    background: rgba(245, 166, 35, 0.12);
+    color: var(--amber);
+    border: 1px solid rgba(245, 166, 35, 0.4);
+  }
+  .flag.user {
+    background: rgba(94, 234, 212, 0.1);
+    color: var(--cyan);
+    border: 1px solid rgba(94, 234, 212, 0.35);
+  }
+  .thesis {
+    padding: 20px 28px;
+    color: var(--text);
+    font-size: 14px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(0,0,0,0.15);
+  }
   .thesis.placeholder { color: var(--text-dim); font-style: italic; }
-  .grid-row { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 20px 28px; gap: 24px; border-bottom: 1px solid var(--line); }
-  .stat .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .grid-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px 28px;
+    gap: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .stat .label {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
   .stat .val { font-size: 15px; }
+  .chart-wrap { padding: 20px 28px; border-bottom: 1px solid var(--line); }
+  .chart-title { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+  .chart-canvas-box { position: relative; height: 180px; }
   .sens-wrap { padding: 20px 28px; }
   .sens-title { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
   table { border-collapse: collapse; font-size: 12px; width: 100%; }
   th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: center; }
   th { color: var(--cyan); font-weight: 400; }
   td.center-cell { color: var(--amber); font-weight: 700; }
-  section.section-label { font-size: 12px; color: var(--text-dim); letter-spacing: 0.15em; text-transform: uppercase; margin: 56px 0 20px; display: flex; align-items: center; gap: 12px; }
-  section.section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
-  footer { max-width: 1000px; margin: 0 auto; padding: 24px; color: var(--text-dim); font-size: 12px; border-top: 1px solid var(--line); }
+  section.section-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 56px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  section.section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+  footer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px;
+    color: var(--text-dim);
+    font-size: 12px;
+    border-top: 1px solid var(--line);
+  }
 </style>
 </head>
 <body>
 <header>
   <div class="eyebrow">// TEARDOWN &mdash; VALUATION LOGS</div>
   <h1>Challenger Auto, Priced.</h1>
-  <p>DCF models on the EV/challenger auto names I have a view on. I write the thesis and set the assumptions; the model math and this page are AI-assisted.</p>
+  <p>DCF models on the EV/challenger auto names I actually have a view on. I write the thesis and set the assumptions; the model math and this page are AI-assisted. Every number below traces back to an assumption you can see &mdash; nothing is hidden in a black box.</p>
 </header>
 <main>
+
+<div class="summary-card">
+  <div class="summary-title">Fair value vs current price &mdash; upside/downside by ticker</div>
+  <div class="chart-canvas-box" style="height:220px;"><canvas id="summary-chart"></canvas></div>
+</div>
 <section class="section-label">Curated coverage</section>
 <div class="card">
   <div class="card-head">
-    <div class="ticker-block"><div class="ticker">RIVN</div><div class="name">Rivian Automotive</div></div>
+    <div class="ticker-block">
+      <div class="ticker">RIVN</div>
+      <div class="name">Rivian Automotive</div>
+    </div>
     <div class="fair-value">
       <div class="label">Fair value / share</div>
       <div class="num">$1.84</div>
+      <div class="price-compare">vs current $17.18 &middot; <span style="color:var(--red);">&#9660; 89.3%</span></div>
       <div class="flag ai">AI default &mdash; needs your review</div>
     </div>
   </div>
@@ -65,18 +232,29 @@
     <div class="stat"><div class="label">WACC</div><div class="val">11.0%</div></div>
     <div class="stat"><div class="label">Terminal growth</div><div class="val">2.5%</div></div>
   </div>
+  <div class="chart-wrap">
+    <div class="chart-title">5-year projection &mdash; revenue (bars) vs free cash flow (line)</div>
+    <div class="chart-canvas-box"><canvas id="chart-0"></canvas></div>
+  </div>
   <div class="sens-wrap">
-    <div class="sens-title">Value / share &mdash; WACC (rows) x terminal growth (cols)</div>
-    <table><tr><th></th><th>1.5%</th><th>2.5%</th><th>3.5%</th></tr><tr><th>9.0%</th><td>$2.69</td><td>$3.43</td><td>$4.44</td></tr><tr><th>10.0%</th><td>$1.98</td><td>$2.52</td><td>$3.24</td></tr><tr><th>11.0%</th><td>$1.42</td><td>$1.84</td><td>$2.37</td></tr><tr><th>12.0%</th><td>$0.98</td><td>$1.31</td><td>$1.71</td></tr><tr><th>13.0%</th><td>$0.62</td><td>$0.88</td><td>$1.19</td></tr></table>
+    <div class="sens-title">Value / share &mdash; WACC (rows) &times; terminal growth (cols)</div>
+    <table>
+      <tr><th></th><th>1.5%</th><th>2.5%</th><th>3.5%</th></tr>
+      <tr><th>9.0%</th><td class="">$2.69</td><td class="">$3.43</td><td class="">$4.44</td></tr><tr><th>10.0%</th><td class="">$1.98</td><td class="">$2.52</td><td class="">$3.24</td></tr><tr><th>11.0%</th><td class="">$1.42</td><td class="center-cell">$1.84</td><td class="">$2.37</td></tr><tr><th>12.0%</th><td class="">$0.98</td><td class="">$1.31</td><td class="">$1.71</td></tr><tr><th>13.0%</th><td class="">$0.62</td><td class="">$0.88</td><td class="">$1.19</td></tr>
+    </table>
   </div>
 </div>
 
 <div class="card">
   <div class="card-head">
-    <div class="ticker-block"><div class="ticker">LCID</div><div class="name">Lucid Group</div></div>
+    <div class="ticker-block">
+      <div class="ticker">LCID</div>
+      <div class="name">Lucid Group</div>
+    </div>
     <div class="fair-value">
       <div class="label">Fair value / share</div>
       <div class="num">$-24.30</div>
+      <div class="price-compare">vs current $6.63 &middot; <span style="color:var(--red);">&#9660; 466.6%</span></div>
       <div class="flag ai">AI default &mdash; needs your review</div>
     </div>
   </div>
@@ -86,18 +264,29 @@
     <div class="stat"><div class="label">WACC</div><div class="val">13.0%</div></div>
     <div class="stat"><div class="label">Terminal growth</div><div class="val">2.5%</div></div>
   </div>
+  <div class="chart-wrap">
+    <div class="chart-title">5-year projection &mdash; revenue (bars) vs free cash flow (line)</div>
+    <div class="chart-canvas-box"><canvas id="chart-1"></canvas></div>
+  </div>
   <div class="sens-wrap">
-    <div class="sens-title">Value / share &mdash; WACC (rows) x terminal growth (cols)</div>
-    <table><tr><th></th><th>1.5%</th><th>2.5%</th><th>3.5%</th></tr><tr><th>11.0%</th><td>$-26.30</td><td>$-27.51</td><td>$-29.04</td></tr><tr><th>12.0%</th><td>$-24.80</td><td>$-25.75</td><td>$-26.91</td></tr><tr><th>13.0%</th><td>$-23.55</td><td>$-24.30</td><td>$-25.21</td></tr><tr><th>14.0%</th><td>$-22.48</td><td>$-23.09</td><td>$-23.82</td></tr><tr><th>15.0%</th><td>$-21.56</td><td>$-22.07</td><td>$-22.66</td></tr></table>
+    <div class="sens-title">Value / share &mdash; WACC (rows) &times; terminal growth (cols)</div>
+    <table>
+      <tr><th></th><th>1.5%</th><th>2.5%</th><th>3.5%</th></tr>
+      <tr><th>11.0%</th><td class="">$-26.30</td><td class="">$-27.51</td><td class="">$-29.04</td></tr><tr><th>12.0%</th><td class="">$-24.80</td><td class="">$-25.75</td><td class="">$-26.91</td></tr><tr><th>13.0%</th><td class="">$-23.55</td><td class="center-cell">$-24.30</td><td class="">$-25.21</td></tr><tr><th>14.0%</th><td class="">$-22.48</td><td class="">$-23.09</td><td class="">$-23.82</td></tr><tr><th>15.0%</th><td class="">$-21.56</td><td class="">$-22.07</td><td class="">$-22.66</td></tr>
+    </table>
   </div>
 </div>
 
 <div class="card">
   <div class="card-head">
-    <div class="ticker-block"><div class="ticker">PSNY</div><div class="name">Polestar Automotive</div></div>
+    <div class="ticker-block">
+      <div class="ticker">PSNY</div>
+      <div class="name">Polestar Automotive</div>
+    </div>
     <div class="fair-value">
       <div class="label">Fair value / share</div>
       <div class="num">$-12.35</div>
+      <div class="price-compare">vs current $20.33 &middot; <span style="color:var(--red);">&#9660; 160.7%</span></div>
       <div class="flag ai">AI default &mdash; needs your review</div>
     </div>
   </div>
@@ -107,18 +296,29 @@
     <div class="stat"><div class="label">WACC</div><div class="val">12.0%</div></div>
     <div class="stat"><div class="label">Terminal growth</div><div class="val">2.0%</div></div>
   </div>
+  <div class="chart-wrap">
+    <div class="chart-title">5-year projection &mdash; revenue (bars) vs free cash flow (line)</div>
+    <div class="chart-canvas-box"><canvas id="chart-2"></canvas></div>
+  </div>
   <div class="sens-wrap">
-    <div class="sens-title">Value / share &mdash; WACC (rows) x terminal growth (cols)</div>
-    <table><tr><th></th><th>1.0%</th><th>2.0%</th><th>3.0%</th></tr><tr><th>10.0%</th><td>$-11.81</td><td>$-11.23</td><td>$-10.47</td></tr><tr><th>11.0%</th><td>$-12.32</td><td>$-11.87</td><td>$-11.30</td></tr><tr><th>12.0%</th><td>$-12.71</td><td>$-12.35</td><td>$-11.91</td></tr><tr><th>13.0%</th><td>$-13.01</td><td>$-12.72</td><td>$-12.38</td></tr><tr><th>14.0%</th><td>$-13.25</td><td>$-13.01</td><td>$-12.73</td></tr></table>
+    <div class="sens-title">Value / share &mdash; WACC (rows) &times; terminal growth (cols)</div>
+    <table>
+      <tr><th></th><th>1.0%</th><th>2.0%</th><th>3.0%</th></tr>
+      <tr><th>10.0%</th><td class="">$-11.81</td><td class="">$-11.23</td><td class="">$-10.47</td></tr><tr><th>11.0%</th><td class="">$-12.32</td><td class="">$-11.87</td><td class="">$-11.30</td></tr><tr><th>12.0%</th><td class="">$-12.71</td><td class="center-cell">$-12.35</td><td class="">$-11.91</td></tr><tr><th>13.0%</th><td class="">$-13.01</td><td class="">$-12.72</td><td class="">$-12.38</td></tr><tr><th>14.0%</th><td class="">$-13.25</td><td class="">$-13.01</td><td class="">$-12.73</td></tr>
+    </table>
   </div>
 </div>
 
 <div class="card">
   <div class="card-head">
-    <div class="ticker-block"><div class="ticker">NIO</div><div class="name">NIO Inc.</div></div>
+    <div class="ticker-block">
+      <div class="ticker">NIO</div>
+      <div class="name">NIO Inc.</div>
+    </div>
     <div class="fair-value">
       <div class="label">Fair value / share</div>
       <div class="num">$-0.36</div>
+      <div class="price-compare">vs current $4.97 &middot; <span style="color:var(--red);">&#9660; 107.2%</span></div>
       <div class="flag ai">AI default &mdash; needs your review</div>
     </div>
   </div>
@@ -128,12 +328,331 @@
     <div class="stat"><div class="label">WACC</div><div class="val">13.0%</div></div>
     <div class="stat"><div class="label">Terminal growth</div><div class="val">2.5%</div></div>
   </div>
+  <div class="chart-wrap">
+    <div class="chart-title">5-year projection &mdash; revenue (bars) vs free cash flow (line)</div>
+    <div class="chart-canvas-box"><canvas id="chart-3"></canvas></div>
+  </div>
   <div class="sens-wrap">
-    <div class="sens-title">Value / share &mdash; WACC (rows) x terminal growth (cols)</div>
-    <table><tr><th></th><th>1.5%</th><th>2.5%</th><th>3.5%</th></tr><tr><th>11.0%</th><td>$-0.20</td><td>$-0.05</td><td>$0.14</td></tr><tr><th>12.0%</th><td>$-0.34</td><td>$-0.22</td><td>$-0.08</td></tr><tr><th>13.0%</th><td>$-0.45</td><td>$-0.36</td><td>$-0.24</td></tr><tr><th>14.0%</th><td>$-0.54</td><td>$-0.46</td><td>$-0.37</td></tr><tr><th>15.0%</th><td>$-0.61</td><td>$-0.55</td><td>$-0.47</td></tr></table>
+    <div class="sens-title">Value / share &mdash; WACC (rows) &times; terminal growth (cols)</div>
+    <table>
+      <tr><th></th><th>1.5%</th><th>2.5%</th><th>3.5%</th></tr>
+      <tr><th>11.0%</th><td class="">$-0.20</td><td class="">$-0.05</td><td class="">$0.14</td></tr><tr><th>12.0%</th><td class="">$-0.34</td><td class="">$-0.22</td><td class="">$-0.08</td></tr><tr><th>13.0%</th><td class="">$-0.45</td><td class="center-cell">$-0.36</td><td class="">$-0.24</td></tr><tr><th>14.0%</th><td class="">$-0.54</td><td class="">$-0.46</td><td class="">$-0.37</td></tr><tr><th>15.0%</th><td class="">$-0.61</td><td class="">$-0.55</td><td class="">$-0.47</td></tr>
+    </table>
   </div>
 </div>
 
+<div class="card">
+  <div class="card-head">
+    <div class="ticker-block">
+      <div class="ticker">TSLA</div>
+      <div class="name">Tesla, Inc.</div>
+    </div>
+    <div class="fair-value">
+      <div class="label">Fair value / share</div>
+      <div class="num">$5.56</div>
+      <div class="price-compare">vs current $425.30 &middot; <span style="color:var(--red);">&#9660; 98.7%</span></div>
+      <div class="flag ai">AI default &mdash; needs your review</div>
+    </div>
+  </div>
+  <div class="thesis placeholder">REPLACE ME: your 2-4 sentence view. Why does growth/margin do what you assumed below? What's the market missing?</div>
+  <div class="grid-row">
+    <div class="stat"><div class="label">Enterprise value</div><div class="val">$13,309M</div></div>
+    <div class="stat"><div class="label">WACC</div><div class="val">11.0%</div></div>
+    <div class="stat"><div class="label">Terminal growth</div><div class="val">2.5%</div></div>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-title">5-year projection &mdash; revenue (bars) vs free cash flow (line)</div>
+    <div class="chart-canvas-box"><canvas id="chart-4"></canvas></div>
+  </div>
+  <div class="sens-wrap">
+    <div class="sens-title">Value / share &mdash; WACC (rows) &times; terminal growth (cols)</div>
+    <table>
+      <tr><th></th><th>1.5%</th><th>2.5%</th><th>3.5%</th></tr>
+      <tr><th>9.0%</th><td class="">$6.60</td><td class="">$7.51</td><td class="">$8.76</td></tr><tr><th>10.0%</th><td class="">$5.73</td><td class="">$6.40</td><td class="">$7.28</td></tr><tr><th>11.0%</th><td class="">$5.05</td><td class="center-cell">$5.56</td><td class="">$6.21</td></tr><tr><th>12.0%</th><td class="">$4.51</td><td class="">$4.91</td><td class="">$5.40</td></tr><tr><th>13.0%</th><td class="">$4.07</td><td class="">$4.39</td><td class="">$4.78</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="ticker-block">
+      <div class="ticker">RACE</div>
+      <div class="name">Ferrari N.V.</div>
+    </div>
+    <div class="fair-value">
+      <div class="label">Fair value / share</div>
+      <div class="num">$217.63</div>
+      <div class="price-compare">vs current $465.00 &middot; <span style="color:var(--red);">&#9660; 53.2%</span></div>
+      <div class="flag user">Your thesis</div>
+    </div>
+  </div>
+  <div class="thesis ">TEST ENTRY - Ferrari's high margins and confirmed 2026 guidance make it a stable comp. Not a final view.</div>
+  <div class="grid-row">
+    <div class="stat"><div class="label">Enterprise value</div><div class="val">$41,539M</div></div>
+    <div class="stat"><div class="label">WACC</div><div class="val">8.0%</div></div>
+    <div class="stat"><div class="label">Terminal growth</div><div class="val">3.0%</div></div>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-title">5-year projection &mdash; revenue (bars) vs free cash flow (line)</div>
+    <div class="chart-canvas-box"><canvas id="chart-5"></canvas></div>
+  </div>
+  <div class="sens-wrap">
+    <div class="sens-title">Value / share &mdash; WACC (rows) &times; terminal growth (cols)</div>
+    <table>
+      <tr><th></th><th>2.0%</th><th>3.0%</th><th>4.0%</th></tr>
+      <tr><th>6.0%</th><td class="">$287.29</td><td class="">$375.05</td><td class="">$550.59</td></tr><tr><th>7.0%</th><td class="">$225.93</td><td class="">$276.66</td><td class="">$361.19</td></tr><tr><th>8.0%</th><td class="">$185.06</td><td class="center-cell">$217.63</td><td class="">$266.50</td></tr><tr><th>9.0%</th><td class="">$155.87</td><td class="">$178.30</td><td class="">$209.70</td></tr><tr><th>10.0%</th><td class="">$134.00</td><td class="">$150.22</td><td class="">$171.84</td></tr>
+    </table>
+  </div>
+</div>
+<script>
+Chart.defaults.color = '#7FA3AC';
+Chart.defaults.font.family = "'Space Mono', monospace";
+Chart.defaults.font.size = 10;
+
+new Chart(document.getElementById('chart-0'), {
+  type: 'bar',
+  data: {
+    labels: ["Y1", "Y2", "Y3", "Y4", "Y5"],
+    datasets: [
+      {
+        type: 'bar',
+        label: 'Revenue ($M)',
+        data: [7003, 8964, 10936, 12576, 13834],
+        backgroundColor: 'rgba(94, 234, 212, 0.35)',
+        borderColor: '#5EEAD4',
+        borderWidth: 1,
+        yAxisID: 'y'
+      },
+      {
+        type: 'line',
+        label: 'FCF ($M)',
+        data: [-829, -490, -145, 263, 644],
+        borderColor: '#F5A623',
+        backgroundColor: '#F5A623',
+        tension: 0.3,
+        yAxisID: 'y1'
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { labels: { boxWidth: 10 } } },
+    scales: {
+      y: { position: 'left', grid: { color: '#1E3D49' }, title: { display: true, text: 'Revenue' } },
+      y1: { position: 'right', grid: { display: false }, title: { display: true, text: 'FCF' } }
+    }
+  }
+});
+
+
+new Chart(document.getElementById('chart-1'), {
+  type: 'bar',
+  data: {
+    labels: ["Y1", "Y2", "Y3", "Y4", "Y5"],
+    datasets: [
+      {
+        type: 'bar',
+        label: 'Revenue ($M)',
+        data: [2166, 3141, 4083, 4900, 5488],
+        backgroundColor: 'rgba(94, 234, 212, 0.35)',
+        borderColor: '#5EEAD4',
+        borderWidth: 1,
+        yAxisID: 'y'
+      },
+      {
+        type: 'line',
+        label: 'FCF ($M)',
+        data: [-1797, -1603, -1101, -724, -578],
+        borderColor: '#F5A623',
+        backgroundColor: '#F5A623',
+        tension: 0.3,
+        yAxisID: 'y1'
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { labels: { boxWidth: 10 } } },
+    scales: {
+      y: { position: 'left', grid: { color: '#1E3D49' }, title: { display: true, text: 'Revenue' } },
+      y1: { position: 'right', grid: { display: false }, title: { display: true, text: 'FCF' } }
+    }
+  }
+});
+
+
+new Chart(document.getElementById('chart-2'), {
+  type: 'bar',
+  data: {
+    labels: ["Y1", "Y2", "Y3", "Y4", "Y5"],
+    datasets: [
+      {
+        type: 'bar',
+        label: 'Revenue ($M)',
+        data: [3672, 4406, 5200, 5927, 6520],
+        backgroundColor: 'rgba(94, 234, 212, 0.35)',
+        borderColor: '#5EEAD4',
+        borderWidth: 1,
+        yAxisID: 'y'
+      },
+      {
+        type: 'line',
+        label: 'FCF ($M)',
+        data: [-570, -405, -229, -66, 90],
+        borderColor: '#F5A623',
+        backgroundColor: '#F5A623',
+        tension: 0.3,
+        yAxisID: 'y1'
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { labels: { boxWidth: 10 } } },
+    scales: {
+      y: { position: 'left', grid: { color: '#1E3D49' }, title: { display: true, text: 'Revenue' } },
+      y1: { position: 'right', grid: { display: false }, title: { display: true, text: 'FCF' } }
+    }
+  }
+});
+
+
+new Chart(document.getElementById('chart-3'), {
+  type: 'bar',
+  data: {
+    labels: ["Y1", "Y2", "Y3", "Y4", "Y5"],
+    datasets: [
+      {
+        type: 'bar',
+        label: 'Revenue ($M)',
+        data: [15638, 19079, 22513, 25664, 28231],
+        backgroundColor: 'rgba(94, 234, 212, 0.35)',
+        borderColor: '#5EEAD4',
+        borderWidth: 1,
+        yAxisID: 'y'
+      },
+      {
+        type: 'line',
+        label: 'FCF ($M)',
+        data: [-2064, -1588, -948, -229, 462],
+        borderColor: '#F5A623',
+        backgroundColor: '#F5A623',
+        tension: 0.3,
+        yAxisID: 'y1'
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { labels: { boxWidth: 10 } } },
+    scales: {
+      y: { position: 'left', grid: { color: '#1E3D49' }, title: { display: true, text: 'Revenue' } },
+      y1: { position: 'right', grid: { display: false }, title: { display: true, text: 'FCF' } }
+    }
+  }
+});
+
+
+new Chart(document.getElementById('chart-4'), {
+  type: 'bar',
+  data: {
+    labels: ["Y1", "Y2", "Y3", "Y4", "Y5"],
+    datasets: [
+      {
+        type: 'bar',
+        label: 'Revenue ($M)',
+        data: [109051, 123228, 136783, 149093, 159530],
+        backgroundColor: 'rgba(94, 234, 212, 0.35)',
+        borderColor: '#5EEAD4',
+        borderWidth: 1,
+        yAxisID: 'y'
+      },
+      {
+        type: 'line',
+        label: 'FCF ($M)',
+        data: [-3840, -2317, -323, 924, 2358],
+        borderColor: '#F5A623',
+        backgroundColor: '#F5A623',
+        tension: 0.3,
+        yAxisID: 'y1'
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { labels: { boxWidth: 10 } } },
+    scales: {
+      y: { position: 'left', grid: { color: '#1E3D49' }, title: { display: true, text: 'Revenue' } },
+      y1: { position: 'right', grid: { display: false }, title: { display: true, text: 'FCF' } }
+    }
+  }
+});
+
+
+new Chart(document.getElementById('chart-5'), {
+  type: 'bar',
+  data: {
+    labels: ["Y1", "Y2", "Y3", "Y4", "Y5"],
+    datasets: [
+      {
+        type: 'bar',
+        label: 'Revenue ($M)',
+        data: [8505, 9015, 9556, 10034, 10536],
+        backgroundColor: 'rgba(94, 234, 212, 0.35)',
+        borderColor: '#5EEAD4',
+        borderWidth: 1,
+        yAxisID: 'y'
+      },
+      {
+        type: 'line',
+        label: 'FCF ($M)',
+        data: [1846, 1955, 2145, 2254, 2367],
+        borderColor: '#F5A623',
+        backgroundColor: '#F5A623',
+        tension: 0.3,
+        yAxisID: 'y1'
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { labels: { boxWidth: 10 } } },
+    scales: {
+      y: { position: 'left', grid: { color: '#1E3D49' }, title: { display: true, text: 'Revenue' } },
+      y1: { position: 'right', grid: { display: false }, title: { display: true, text: 'FCF' } }
+    }
+  }
+});
+
+
+new Chart(document.getElementById('summary-chart'), {
+  type: 'bar',
+  data: {
+    labels: ["RIVN", "LCID", "PSNY", "NIO", "TSLA", "RACE"],
+    datasets: [{
+      label: 'Upside / downside (%)',
+      data: [-89.3, -466.6, -160.7, -107.2, -98.7, -53.2],
+      backgroundColor: ['#E8664B','#E8664B','#E8664B','#E8664B','#E8664B','#E8664B']
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { color: '#1E3D49' }, ticks: { callback: (v) => v + '%' } },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+</script>
 </main>
 <footer>
   <div>Built with a Python DCF engine + AI-assisted tooling. Assumptions and theses marked USER are mine; AI DEFAULT entries are unreviewed placeholders, not opinions. Not investment advice.</div>
