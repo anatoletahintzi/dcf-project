@@ -1,0 +1,40 @@
+name: 15-minute price refresh
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Refresh prices only
+        run: python3 refresh_prices.py
+
+      - name: Recalculate DCF
+        run: |
+          python3 dcf_engine.py companies.json results.json
+          if [ -f ai_picks.json ]; then python3 dcf_engine.py ai_picks.json ai_results.json; fi
+
+      - name: Rebuild site
+        run: python3 generate_site.py
+
+      - name: Commit and push if anything changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add companies.json ai_picks.json results.json ai_results.json index.html
+          git diff --staged --quiet || git commit -m "Auto price refresh"
+          git push
