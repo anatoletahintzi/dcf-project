@@ -218,11 +218,11 @@ PAGE_HEAD = """<!DOCTYPE html>
 </head>
 <body>
 <header>
-  <div class="eyebrow">// TEARDOWN &mdash; VALUATION LOGS</div>
-  <h1>Challenger Auto, Priced.</h1>
-  <p>DCF models on the EV/challenger auto names I actually have a view on. I write the thesis and set the assumptions; the model math and this page are AI-assisted. Every number below traces back to an assumption you can see &mdash; nothing is hidden in a black box.</p>
+  <div class="eyebrow">// TEARDOWN &mdash; VALUATION LOGS &middot; ANATOLE TAHINTZI</div>
+  <h1>Auto Sector Valuations</h1>
+  <p>DCF models on companies I have a real view on. I set the assumptions and write the thesis; the tooling and this page are AI-assisted.</p>
   <div style="margin-top:16px;padding:10px 16px;background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.4);border-radius:2px;color:var(--amber);font-size:13px;display:inline-block;">
-    Actively building, started July 2, 2026 &mdash; financial data pipeline is live and automated; investment theses are still being written company by company.
+    Actively building, started July 2026 &mdash; the data pipeline (SEC EDGAR + Yahoo Finance, fully automated) is live. Cards flagged "AI default" below still have placeholder assumptions, not my actual view yet.
   </div>
 </header>
 <main>
