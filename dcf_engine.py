@@ -1,15 +1,3 @@
-"""
-dcf_engine.py
-
-A DCF engine that separates "mechanics" (this file) from "assumptions"
-(companies.json). The idea: this script never invents a growth rate,
-margin target, or WACC. Those come from the JSON file, and for the
-curated companies they should be YOUR view, with a one-line rationale.
-
-Usage:
-    python3 dcf_engine.py companies.json results.json
-"""
-
 import json
 import sys
 from dataclasses import dataclass
@@ -36,7 +24,7 @@ class DCFAssumptions:
     current_price: float = None
 
 
-def project_fcf(a: DCFAssumptions) -> Dict:
+def project_fcf(a):
     years = len(a.revenue_growth)
     revenues = []
     rev = a.base_revenue_musd
@@ -62,17 +50,14 @@ def project_fcf(a: DCFAssumptions) -> Dict:
     return {"revenues": revenues, "fcfs": fcfs}
 
 
-def discount_and_value(a: DCFAssumptions, fcfs: List[float]) -> Dict:
+def discount_and_value(a, fcfs):
     pv_fcfs = [fcf / ((1 + a.wacc) ** t) for t, fcf in enumerate(fcfs, start=1)]
-
     terminal_fcf = fcfs[-1] * (1 + a.terminal_growth)
     terminal_value = terminal_fcf / (a.wacc - a.terminal_growth)
     pv_terminal = terminal_value / ((1 + a.wacc) ** len(fcfs))
-
     enterprise_value = sum(pv_fcfs) + pv_terminal
     equity_value = enterprise_value - a.net_debt_musd
     value_per_share = equity_value / a.shares_out_musd if a.shares_out_musd else None
-
     result = {
         "pv_fcfs": pv_fcfs,
         "sum_pv_fcfs": sum(pv_fcfs),
@@ -89,7 +74,7 @@ def discount_and_value(a: DCFAssumptions, fcfs: List[float]) -> Dict:
     return result
 
 
-def sensitivity_table(a: DCFAssumptions, wacc_range, terminal_growth_range) -> List[List[float]]:
+def sensitivity_table(a, wacc_range, terminal_growth_range):
     base = project_fcf(a)
     grid = []
     for w in wacc_range:
@@ -102,7 +87,7 @@ def sensitivity_table(a: DCFAssumptions, wacc_range, terminal_growth_range) -> L
     return grid
 
 
-def run_company(record: Dict) -> Dict:
+def run_company(record):
     a = DCFAssumptions(**{k: v for k, v in record.items() if k in DCFAssumptions.__dataclass_fields__})
     proj = project_fcf(a)
     val = discount_and_value(a, proj["fcfs"])
@@ -110,7 +95,6 @@ def run_company(record: Dict) -> Dict:
                   round(a.wacc + 0.01, 3), round(a.wacc + 0.02, 3)]
     tg_range = [round(a.terminal_growth - 0.01, 3), a.terminal_growth, round(a.terminal_growth + 0.01, 3)]
     sens = sensitivity_table(a, wacc_range, tg_range)
-
     return {
         "ticker": a.ticker,
         "name": a.name,
@@ -129,11 +113,18 @@ def run_company(record: Dict) -> Dict:
 
 def main():
     infile = sys.argv[1] if len(sys.argv) > 1 else "companies.json"
-    outfile = sys.argv[2] if len(sys.argv) > 2 else "results.json"
     with open(infile) as f:
         companies = json.load(f)
 
-    results = [run_company(c) for c in companies]
+    outfile = sys.argv[2] if len(sys.argv) > 2 else "results.json"
+
+    results = []
+    for c in companies:
+        missing = [k for k in ("base_revenue_musd", "net_debt_musd", "shares_out_musd") if c.get(k) is None]
+        if missing:
+            print(f"  [skipped] {c.get('ticker', '?')}: missing {', '.join(missing)} - fix in {infile} or remove this entry")
+            continue
+        results.append(run_company(c))
 
     with open(outfile, "w") as f:
         json.dump(results, f, indent=2)
