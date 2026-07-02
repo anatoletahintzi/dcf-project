@@ -1,0 +1,450 @@
+[
+  {
+    "ticker": "RIVN",
+    "name": "Rivian Automotive",
+    "thesis": "REPLACE ME: your 2-4 sentence view. Why does growth/margin do what you assumed below? What's the market missing?",
+    "thesis_author": "user",
+    "assumptions": {
+      "ticker": "RIVN",
+      "name": "Rivian Automotive",
+      "thesis": "REPLACE ME: your 2-4 sentence view. Why does growth/margin do what you assumed below? What's the market missing?",
+      "thesis_author": "user",
+      "base_revenue_musd": 5387.0,
+      "revenue_growth": [
+        0.3,
+        0.28,
+        0.22,
+        0.15,
+        0.1
+      ],
+      "ebitda_margin": [
+        -0.05,
+        0.03,
+        0.08,
+        0.12,
+        0.15
+      ],
+      "tax_rate": 0.21,
+      "da_pct_revenue": 0.06,
+      "capex_pct_revenue": 0.08,
+      "nwc_pct_revenue_change": 0.05,
+      "wacc": 0.11,
+      "terminal_growth": 0.025,
+      "net_debt_musd": 1597.0,
+      "shares_out_musd": 1260.0,
+      "current_price": 17.3,
+      "_note": "Auto-pulled from SEC EDGAR (2025-12-31)."
+    },
+    "projection": {
+      "revenues": [
+        7003.1,
+        8963.968,
+        10936.04096,
+        12576.447103999999,
+        13834.0918144
+      ],
+      "fcfs": [
+        -829.4363900000001,
+        -489.76880160000013,
+        -144.53502003199998,
+        262.57434344960006,
+        644.0398561958397
+      ]
+    },
+    "valuation": {
+      "pv_fcfs": [
+        -747.239990990991,
+        -397.5073464816168,
+        -105.68276094355856,
+        172.9658530460389,
+        382.2063079820641
+      ],
+      "sum_pv_fcfs": -695.2579373880634,
+      "terminal_value": 7766.36297177336,
+      "pv_terminal_value": 4608.958419783714,
+      "enterprise_value": 3913.7004823956504,
+      "equity_value": 2316.7004823956504,
+      "value_per_share": 1.8386511765044844,
+      "pct_ev_from_terminal": 1.1776472012908057,
+      "current_price": 17.3,
+      "upside_pct": -0.8937195851731512
+    },
+    "sensitivity": {
+      "wacc_range": [
+        0.09,
+        0.1,
+        0.11,
+        0.12,
+        0.13
+      ],
+      "terminal_growth_range": [
+        0.015,
+        0.025,
+        0.035
+      ],
+      "grid": [
+        [
+          2.69,
+          3.43,
+          4.44
+        ],
+        [
+          1.98,
+          2.52,
+          3.24
+        ],
+        [
+          1.42,
+          1.84,
+          2.37
+        ],
+        [
+          0.98,
+          1.31,
+          1.71
+        ],
+        [
+          0.62,
+          0.88,
+          1.19
+        ]
+      ]
+    }
+  },
+  {
+    "ticker": "LCID",
+    "name": "Lucid Group",
+    "thesis": "REPLACE ME: your 2-4 sentence view.",
+    "thesis_author": "user",
+    "assumptions": {
+      "ticker": "LCID",
+      "name": "Lucid Group",
+      "thesis": "REPLACE ME: your 2-4 sentence view.",
+      "thesis_author": "user",
+      "base_revenue_musd": 1353.8,
+      "revenue_growth": [
+        0.6,
+        0.45,
+        0.3,
+        0.2,
+        0.12
+      ],
+      "ebitda_margin": [
+        -0.8,
+        -0.4,
+        -0.1,
+        0.05,
+        0.1
+      ],
+      "tax_rate": 0.21,
+      "da_pct_revenue": 0.1,
+      "capex_pct_revenue": 0.2,
+      "nwc_pct_revenue_change": 0.05,
+      "wacc": 0.13,
+      "terminal_growth": 0.025,
+      "net_debt_musd": 2054.9,
+      "shares_out_musd": 390.3,
+      "current_price": 6.69,
+      "_note": "Auto-pulled from SEC EDGAR (2025-12-31)."
+    },
+    "projection": {
+      "revenues": [
+        2166.08,
+        3140.816,
+        4083.0607999999997,
+        4899.67296,
+        5487.633715200001
+      ],
+      "fcfs": [
+        -1797.3048800000001,
+        -1603.4407199999998,
+        -1100.5419264,
+        -724.33498592,
+        -578.1614092800002
+      ]
+    },
+    "valuation": {
+      "pv_fcfs": [
+        -1590.5352920353985,
+        -1255.7292818544915,
+        -762.7307606849278,
+        -444.24821197811366,
+        -313.8028494981639
+      ],
+      "sum_pv_fcfs": -4367.046396051095,
+      "terminal_value": -5643.9566144,
+      "pv_terminal_value": -3063.3135308154083,
+      "enterprise_value": -7430.359926866504,
+      "equity_value": -9485.259926866504,
+      "value_per_share": -24.302485080365113,
+      "pct_ev_from_terminal": 0.4122698713071971,
+      "current_price": 6.69,
+      "upside_pct": -4.632658457453679
+    },
+    "sensitivity": {
+      "wacc_range": [
+        0.11,
+        0.12,
+        0.13,
+        0.14,
+        0.15
+      ],
+      "terminal_growth_range": [
+        0.015,
+        0.025,
+        0.035
+      ],
+      "grid": [
+        [
+          -26.3,
+          -27.51,
+          -29.04
+        ],
+        [
+          -24.8,
+          -25.75,
+          -26.91
+        ],
+        [
+          -23.55,
+          -24.3,
+          -25.21
+        ],
+        [
+          -22.48,
+          -23.09,
+          -23.82
+        ],
+        [
+          -21.56,
+          -22.07,
+          -22.66
+        ]
+      ]
+    }
+  },
+  {
+    "ticker": "PSNY",
+    "name": "Polestar Automotive",
+    "thesis": "REPLACE ME: your 2-4 sentence view.",
+    "thesis_author": "user",
+    "assumptions": {
+      "ticker": "PSNY",
+      "name": "Polestar Automotive",
+      "thesis": "REPLACE ME: your 2-4 sentence view.",
+      "thesis_author": "user",
+      "base_revenue_musd": 3060,
+      "revenue_growth": [
+        0.2,
+        0.2,
+        0.18,
+        0.14,
+        0.1
+      ],
+      "ebitda_margin": [
+        -0.1,
+        -0.02,
+        0.04,
+        0.08,
+        0.11
+      ],
+      "tax_rate": 0.21,
+      "da_pct_revenue": 0.05,
+      "capex_pct_revenue": 0.08,
+      "nwc_pct_revenue_change": 0.04,
+      "wacc": 0.12,
+      "terminal_growth": 0.02,
+      "net_debt_musd": 1324,
+      "shares_out_musd": 145,
+      "current_price": 18.78,
+      "_note": "Manually entered from Polestar FY2025/Q1'26 earnings releases - net debt is approximate given ongoing debt-to-equity conversions in early 2026. Verify before relying on it."
+    },
+    "projection": {
+      "revenues": [
+        3672.0,
+        4406.4,
+        5199.552,
+        5927.489280000001,
+        6520.238208000002
+      ],
+      "fcfs": [
+        -569.772,
+        -405.24191999999994,
+        -228.7891008,
+        -66.46067366400004,
+        89.7421876992
+      ]
+    },
+    "valuation": {
+      "pv_fcfs": [
+        -508.725,
+        -323.0563775510203,
+        -162.84756286443144,
+        -42.23695961643587,
+        50.9221273914654
+      ],
+      "sum_pv_fcfs": -985.9437726404223,
+      "terminal_value": 915.3703145318401,
+      "pv_terminal_value": 519.4056993929472,
+      "enterprise_value": -466.53807324747504,
+      "equity_value": -1790.538073247475,
+      "value_per_share": -12.348538436189482,
+      "pct_ev_from_terminal": -1.1133189961913967,
+      "current_price": 18.78,
+      "upside_pct": -1.6575366579440618
+    },
+    "sensitivity": {
+      "wacc_range": [
+        0.1,
+        0.11,
+        0.12,
+        0.13,
+        0.14
+      ],
+      "terminal_growth_range": [
+        0.01,
+        0.02,
+        0.03
+      ],
+      "grid": [
+        [
+          -11.81,
+          -11.23,
+          -10.47
+        ],
+        [
+          -12.32,
+          -11.87,
+          -11.3
+        ],
+        [
+          -12.71,
+          -12.35,
+          -11.91
+        ],
+        [
+          -13.01,
+          -12.72,
+          -12.38
+        ],
+        [
+          -13.25,
+          -13.01,
+          -12.73
+        ]
+      ]
+    }
+  },
+  {
+    "ticker": "NIO",
+    "name": "NIO Inc.",
+    "thesis": "REPLACE ME: your 2-4 sentence view.",
+    "thesis_author": "user",
+    "assumptions": {
+      "ticker": "NIO",
+      "name": "NIO Inc.",
+      "thesis": "REPLACE ME: your 2-4 sentence view.",
+      "thesis_author": "user",
+      "base_revenue_musd": 12510.5,
+      "revenue_growth": [
+        0.25,
+        0.22,
+        0.18,
+        0.14,
+        0.1
+      ],
+      "ebitda_margin": [
+        -0.08,
+        -0.02,
+        0.03,
+        0.07,
+        0.1
+      ],
+      "tax_rate": 0.2,
+      "da_pct_revenue": 0.05,
+      "capex_pct_revenue": 0.07,
+      "nwc_pct_revenue_change": 0.04,
+      "wacc": 0.13,
+      "terminal_growth": 0.025,
+      "net_debt_musd": -284.8,
+      "shares_out_musd": 2474.3,
+      "current_price": 4.6,
+      "_note": "Auto-pulled from SEC EDGAR (2025-12-31)."
+    },
+    "projection": {
+      "revenues": [
+        15638.125,
+        19078.5125,
+        22512.64475,
+        25664.415015000002,
+        28230.856516500004
+      ],
+      "fcfs": [
+        -2064.2325,
+        -1587.58245,
+        -947.820501,
+        -228.72847066000026,
+        461.9594702700004
+      ]
+    },
+    "valuation": {
+      "pv_fcfs": [
+        -1826.7544247787614,
+        -1243.3099302999456,
+        -656.8871520281768,
+        -140.283454609241,
+        250.73309251808456
+      ],
+      "sum_pv_fcfs": -3616.5018691980404,
+      "terminal_value": 4509.604352635717,
+      "pv_terminal_value": 2447.6325698193964,
+      "enterprise_value": -1168.869299378644,
+      "equity_value": -884.069299378644,
+      "value_per_share": -0.3573007716843729,
+      "pct_ev_from_terminal": -2.094017330355521,
+      "current_price": 4.6,
+      "upside_pct": -1.0776740808009506
+    },
+    "sensitivity": {
+      "wacc_range": [
+        0.11,
+        0.12,
+        0.13,
+        0.14,
+        0.15
+      ],
+      "terminal_growth_range": [
+        0.015,
+        0.025,
+        0.035
+      ],
+      "grid": [
+        [
+          -0.2,
+          -0.05,
+          0.14
+        ],
+        [
+          -0.34,
+          -0.22,
+          -0.08
+        ],
+        [
+          -0.45,
+          -0.36,
+          -0.24
+        ],
+        [
+          -0.54,
+          -0.46,
+          -0.37
+        ],
+        [
+          -0.61,
+          -0.55,
+          -0.47
+        ]
+      ]
+    }
+  }
+]

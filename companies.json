@@ -1,0 +1,114 @@
+[
+  {
+    "ticker": "RIVN",
+    "name": "Rivian Automotive",
+    "thesis": "REPLACE ME: your 2-4 sentence view. Why does growth/margin do what you assumed below? What's the market missing?",
+    "thesis_author": "user",
+    "base_revenue_musd": 5387.0,
+    "revenue_growth": [
+      0.3,
+      0.28,
+      0.22,
+      0.15,
+      0.1
+    ],
+    "ebitda_margin": [
+     -0.05, 
+     0.03, 
+     0.08, 
+     0.12, 
+     0.15
+    ],
+    "tax_rate": 0.21,
+    "da_pct_revenue": 0.06,
+    "capex_pct_revenue": 0.08,
+    "nwc_pct_revenue_change": 0.05,
+    "wacc": 0.11,
+    "terminal_growth": 0.025,
+    "net_debt_musd": 1597.0,
+    "shares_out_musd": 1260.0,
+    "current_price": 17.30,
+    "_note": "Auto-pulled from SEC EDGAR (2025-12-31)."
+  },
+  {
+    "ticker": "LCID",
+    "name": "Lucid Group",
+    "thesis": "REPLACE ME: your 2-4 sentence view.",
+    "thesis_author": "user",
+    "base_revenue_musd": 1353.8,
+    "revenue_growth": [
+      0.6,
+      0.45,
+      0.3,
+      0.2,
+      0.12
+    ],
+    "ebitda_margin": [
+      -0.8,
+      -0.4,
+      -0.1,
+      0.05,
+      0.1
+    ],
+    "tax_rate": 0.21,
+    "da_pct_revenue": 0.1,
+    "capex_pct_revenue": 0.2,
+    "nwc_pct_revenue_change": 0.05,
+    "wacc": 0.13,
+    "terminal_growth": 0.025,
+    "net_debt_musd": 2054.9,
+    "shares_out_musd": 390.3,
+    "current_price": 6.69,
+    "_note": "Auto-pulled from SEC EDGAR (2025-12-31)."
+  },
+  {
+    "ticker": "PSNY",
+    "name": "Polestar Automotive",
+    "thesis": "REPLACE ME: your 2-4 sentence view.",
+    "thesis_author": "user",
+    "base_revenue_musd": 3060,
+    "revenue_growth": [0.20, 0.20, 0.18, 0.14, 0.10],
+    "ebitda_margin": [-0.10, -0.02, 0.04, 0.08, 0.11],
+    "tax_rate": 0.21,
+    "da_pct_revenue": 0.05,
+    "capex_pct_revenue": 0.08,
+    "nwc_pct_revenue_change": 0.04,
+    "wacc": 0.12,
+    "terminal_growth": 0.02,
+    "net_debt_musd": 1324,
+    "shares_out_musd": 145,
+    "current_price": 18.78,
+    "_note": "Manually entered from Polestar FY2025/Q1'26 earnings releases - net debt is approximate given ongoing debt-to-equity conversions in early 2026. Verify before relying on it."
+  },
+  {
+    "ticker": "NIO",
+    "name": "NIO Inc.",
+    "thesis": "REPLACE ME: your 2-4 sentence view.",
+    "thesis_author": "user",
+    "base_revenue_musd": 12510.5,
+    "revenue_growth": [
+      0.25,
+      0.22,
+      0.18,
+      0.14,
+      0.1
+    ],
+    "ebitda_margin": [
+      -0.08,
+      -0.02,
+      0.03,
+      0.07,
+      0.1
+    ],
+    "tax_rate": 0.2,
+    "da_pct_revenue": 0.05,
+    "capex_pct_revenue": 0.07,
+    "nwc_pct_revenue_change": 0.04,
+    "wacc": 0.13,
+    "terminal_growth": 0.025,
+    "net_debt_musd": -284.8,
+    "shares_out_musd": 2474.3,
+    "current_price": 4.60,
+    "_note": "Auto-pulled from SEC EDGAR (2025-12-31)."
+  }
+]
