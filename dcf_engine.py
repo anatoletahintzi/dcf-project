@@ -6,17 +6,13 @@ A DCF engine that separates "mechanics" (this file) from "assumptions"
 margin target, or WACC. Those come from the JSON file, and for the
 curated companies they should be YOUR view, with a one-line rationale.
 
-For the "AI weekly picks", assumptions are auto-populated from simple
-consensus-style defaults (see weekly_picks.py) and explicitly flagged
-as unreviewed until you edit companies.json yourself.
-
 Usage:
-    python dcf_engine.py companies.json
+    python3 dcf_engine.py companies.json results.json
 """
 
 import json
 import sys
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import List, Dict
 
 
@@ -24,20 +20,20 @@ from typing import List, Dict
 class DCFAssumptions:
     ticker: str
     name: str
-    thesis: str                      # your written view - required, flagged if empty
-    thesis_author: str                # "user" or "ai_default"
-    base_revenue_musd: float          # most recent FY revenue, $M
-    revenue_growth: List[float]       # yoy growth rate per forecast year, e.g. [0.25, 0.20, 0.15, 0.10, 0.08]
-    ebitda_margin: List[float]        # ebitda margin per forecast year, same length
+    thesis: str
+    thesis_author: str
+    base_revenue_musd: float
+    revenue_growth: List[float]
+    ebitda_margin: List[float]
     tax_rate: float
-    da_pct_revenue: float             # D&A as % of revenue
+    da_pct_revenue: float
     capex_pct_revenue: float
-    nwc_pct_revenue_change: float     # incremental NWC as % of revenue change
+    nwc_pct_revenue_change: float
     wacc: float
     terminal_growth: float
-    net_debt_musd: float              # net debt (debt - cash), $M
-    shares_out_musd: float            # diluted shares outstanding, millions
-    current_price: float = None       # optional, for upside/downside vs market
+    net_debt_musd: float
+    shares_out_musd: float
+    current_price: float = None
 
 
 def project_fcf(a: DCFAssumptions) -> Dict:
@@ -67,10 +63,7 @@ def project_fcf(a: DCFAssumptions) -> Dict:
 
 
 def discount_and_value(a: DCFAssumptions, fcfs: List[float]) -> Dict:
-    pv_fcfs = []
-    for t, fcf in enumerate(fcfs, start=1):
-        pv = fcf / ((1 + a.wacc) ** t)
-        pv_fcfs.append(pv)
+    pv_fcfs = [fcf / ((1 + a.wacc) ** t) for t, fcf in enumerate(fcfs, start=1)]
 
     terminal_fcf = fcfs[-1] * (1 + a.terminal_growth)
     terminal_value = terminal_fcf / (a.wacc - a.terminal_growth)
@@ -97,7 +90,6 @@ def discount_and_value(a: DCFAssumptions, fcfs: List[float]) -> Dict:
 
 
 def sensitivity_table(a: DCFAssumptions, wacc_range, terminal_growth_range) -> List[List[float]]:
-    """Returns a grid of value_per_share for combinations of WACC x terminal growth."""
     base = project_fcf(a)
     grid = []
     for w in wacc_range:
@@ -137,12 +129,12 @@ def run_company(record: Dict) -> Dict:
 
 def main():
     infile = sys.argv[1] if len(sys.argv) > 1 else "companies.json"
+    outfile = sys.argv[2] if len(sys.argv) > 2 else "results.json"
     with open(infile) as f:
         companies = json.load(f)
 
     results = [run_company(c) for c in companies]
 
-    outfile = "results.json"
     with open(outfile, "w") as f:
         json.dump(results, f, indent=2)
 
