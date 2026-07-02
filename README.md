@@ -1,11 +1,13 @@
 # Teardown — Challenger Auto Valuation Site
 
+Live site: https://anatoletahintzi.github.io/dcf-project/
+
 ## What's here
-- `companies.json` — your curated coverage (Rivian, Lucid, Polestar, NIO). **Assumptions in here are placeholders** — replace `base_revenue_musd`, `net_debt_musd`, `shares_out_musd` with real numbers from each company's latest 10-Q/10-K, and replace every `thesis` field with your actual 2-4 sentence view (why growth/margins do what you assumed).
-- `dcf_engine.py` — the mechanics only. Takes assumptions in, produces enterprise value / equity value / value per share / sensitivity table out. Never invents an assumption.
-- `weekly_picks.py` — draws 3 tickers from a fixed challenger-auto watchlist and fills flat consensus-style defaults, clearly flagged `ai_default`. Produces `ai_picks.json`. Run its own DCF pass separately, or graduate a pick into `companies.json` once you've written a real thesis for it.
-- `generate_site.py` — renders `results.json` into `index.html`. No framework, no build step.
-- `index.html` — the current rendered site (built from the placeholder data — regenerate after you edit `companies.json`).
+- `companies.json` — curated coverage (Rivian, Lucid, Polestar, NIO, Tesla, Ford, GM). Each entry has real financial inputs pulled from SEC filings, plus my own growth/margin/WACC assumptions and thesis.
+- `fetch_financials.py` — pulls revenue, net debt, shares outstanding, and live price for any US-listed ticker automatically, straight from **SEC EDGAR** (financials) and **Yahoo Finance** (live price). No login, no API key, no manual lookup needed.
+- `dcf_engine.py` — the DCF mechanics only (discounting, terminal value, sensitivity table). Never invents an assumption — everything it uses comes from `companies.json`.
+- `weekly_picks.py` — draws tickers from a watchlist and fills flat consensus-style default assumptions, flagged `ai_default` until reviewed.
+- `generate_site.py` — renders `results.json` into `index.html`.
 
 ## Workflow
 ```
