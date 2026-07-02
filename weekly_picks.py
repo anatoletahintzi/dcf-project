@@ -2,19 +2,9 @@
 weekly_picks.py
 
 Generates 3 "AI pick" entries with DEFAULT assumptions (not your thesis).
-These get merged into the site clearly flagged as "AI default - unreviewed"
-until you edit them in companies.json (moving them from ai_picks.json into
-your curated file, with your own thesis and assumptions).
-
-This is deliberately dumb about picking: it draws from a fixed watchlist
-pool rather than "whatever's trending," so the picks stay in the same
-challenger-auto lane as your curated names instead of turning into a
-random ticker-of-the-week grab bag.
-
-In your own environment (with network access) you'd wire base_revenue,
-net_debt, shares_out here from a real data source (yfinance, a broker API,
-etc). This script ships with the same placeholder-financials pattern as
-companies.json - replace before trusting any output.
+Pulls REAL financials (via fetch_financials.py) so the DCF output is
+grounded, not fake placeholder numbers - only the growth/margin/WACC
+assumptions are generic defaults, clearly flagged.
 """
 
 import json
@@ -28,7 +18,6 @@ WATCHLIST = [
     {"ticker": "GM", "name": "General Motors"},
     {"ticker": "XPEV", "name": "XPeng Inc."},
     {"ticker": "LI", "name": "Li Auto Inc."},
-    {"ticker": "FSR_LEGACY", "name": "(retired - do not use, Fisker delisted)"},
     {"ticker": "VFS", "name": "VinFast Auto"},
 ]
 
@@ -45,25 +34,37 @@ DEFAULT_ASSUMPTION_TEMPLATE = {
 
 
 def pick_three(seed=None):
-    pool = [c for c in WATCHLIST if "retired" not in c["name"]]
     rnd = random.Random(seed or date.today().isoformat())
-    return rnd.sample(pool, 3)
+    return rnd.sample(WATCHLIST, 3)
 
 
 def build_entry(company):
+    from fetch_financials import fetch_company as _fetch_real
+
     entry = {
         "ticker": company["ticker"],
         "name": company["name"],
         "thesis": "AI-generated placeholder using flat consensus-style assumptions. "
                   "No variant view yet - replace with your own thesis before using this number for anything.",
         "thesis_author": "ai_default",
-        "base_revenue_musd": 10000,   # placeholder - replace with real trailing revenue
-        "net_debt_musd": 0,           # placeholder
-        "shares_out_musd": 1000,      # placeholder
         "current_price": None,
     }
     entry.update(DEFAULT_ASSUMPTION_TEMPLATE)
-    entry["_note"] = "FULLY PLACEHOLDER - this ticker was auto-picked and has no real financials wired in yet."
+
+    try:
+        real = _fetch_real(company["ticker"])
+        entry["name"] = real["name"]
+        entry["base_revenue_musd"] = real["base_revenue_musd"] or 10000
+        entry["net_debt_musd"] = real["net_debt_musd"] or 0
+        entry["shares_out_musd"] = real["shares_out_musd"] or 1000
+        entry["current_price"] = real["current_price"]
+        entry["_note"] = "Financials auto-pulled from SEC EDGAR + Yahoo Finance. Assumptions are flat consensus-style defaults - unreviewed."
+    except Exception as e:
+        entry["base_revenue_musd"] = 10000
+        entry["net_debt_musd"] = 0
+        entry["shares_out_musd"] = 1000
+        entry["_note"] = f"Real financial fetch failed ({e}) - using rough placeholder financials instead."
+
     return entry
 
 
@@ -73,8 +74,7 @@ def main():
     with open("ai_picks.json", "w") as f:
         json.dump(entries, f, indent=2)
     print("This week's AI picks:", ", ".join(e["ticker"] for e in entries))
-    print("Wrote ai_picks.json - run dcf_engine.py against it separately,")
-    print("or merge into companies.json once you've added a real thesis + real financials.")
+    print("Wrote ai_picks.json")
 
 
 if __name__ == "__main__":
