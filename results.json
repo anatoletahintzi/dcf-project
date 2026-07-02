@@ -32,7 +32,7 @@
       "terminal_growth": 0.025,
       "net_debt_musd": 1597.0,
       "shares_out_musd": 1260.0,
-      "current_price": 17.3,
+      "current_price": 17.18,
       "_note": "Auto-pulled from SEC EDGAR (2025-12-31)."
     },
     "projection": {
@@ -66,8 +66,8 @@
       "equity_value": 2316.7004823956504,
       "value_per_share": 1.8386511765044844,
       "pct_ev_from_terminal": 1.1776472012908057,
-      "current_price": 17.3,
-      "upside_pct": -0.8937195851731512
+      "current_price": 17.18,
+      "upside_pct": -0.8929772307040463
     },
     "sensitivity": {
       "wacc_range": [
@@ -144,7 +144,7 @@
       "terminal_growth": 0.025,
       "net_debt_musd": 2054.9,
       "shares_out_musd": 390.3,
-      "current_price": 6.69,
+      "current_price": 6.63,
       "_note": "Auto-pulled from SEC EDGAR (2025-12-31)."
     },
     "projection": {
@@ -178,8 +178,8 @@
       "equity_value": -9485.259926866504,
       "value_per_share": -24.302485080365113,
       "pct_ev_from_terminal": 0.4122698713071971,
-      "current_price": 6.69,
-      "upside_pct": -4.632658457453679
+      "current_price": 6.63,
+      "upside_pct": -4.665533194625206
     },
     "sensitivity": {
       "wacc_range": [
@@ -256,8 +256,8 @@
       "terminal_growth": 0.02,
       "net_debt_musd": 1324,
       "shares_out_musd": 145,
-      "current_price": 18.78,
-      "_note": "Manually entered from Polestar FY2025/Q1'26 earnings releases - net debt is approximate given ongoing debt-to-equity conversions in early 2026. Verify before relying on it."
+      "current_price": 20.33,
+      "_note": "Auto-pulled from SEC EDGAR (None)."
     },
     "projection": {
       "revenues": [
@@ -290,8 +290,8 @@
       "equity_value": -1790.538073247475,
       "value_per_share": -12.348538436189482,
       "pct_ev_from_terminal": -1.1133189961913967,
-      "current_price": 18.78,
-      "upside_pct": -1.6575366579440618
+      "current_price": 20.33,
+      "upside_pct": -1.6074047435410468
     },
     "sensitivity": {
       "wacc_range": [
@@ -368,7 +368,7 @@
       "terminal_growth": 0.025,
       "net_debt_musd": -284.8,
       "shares_out_musd": 2474.3,
-      "current_price": 4.6,
+      "current_price": 4.97,
       "_note": "Auto-pulled from SEC EDGAR (2025-12-31)."
     },
     "projection": {
@@ -402,8 +402,8 @@
       "equity_value": -884.069299378644,
       "value_per_share": -0.3573007716843729,
       "pct_ev_from_terminal": -2.094017330355521,
-      "current_price": 4.6,
-      "upside_pct": -1.0776740808009506
+      "current_price": 4.97,
+      "upside_pct": -1.0718915033570167
     },
     "sensitivity": {
       "wacc_range": [
@@ -443,6 +443,230 @@
           -0.61,
           -0.55,
           -0.47
+        ]
+      ]
+    }
+  },
+  {
+    "ticker": "TSLA",
+    "name": "Tesla,\u00a0Inc.",
+    "thesis": "REPLACE ME: your 2-4 sentence view. Why does growth/margin do what you assumed below? What's the market missing?",
+    "thesis_author": "user",
+    "assumptions": {
+      "ticker": "TSLA",
+      "name": "Tesla,\u00a0Inc.",
+      "thesis": "REPLACE ME: your 2-4 sentence view. Why does growth/margin do what you assumed below? What's the market missing?",
+      "thesis_author": "user",
+      "current_price": 425.3,
+      "revenue_growth": [
+        0.15,
+        0.13,
+        0.11,
+        0.09,
+        0.07
+      ],
+      "ebitda_margin": [
+        0.05,
+        0.07,
+        0.09,
+        0.1,
+        0.11
+      ],
+      "tax_rate": 0.21,
+      "da_pct_revenue": 0.05,
+      "capex_pct_revenue": 0.08,
+      "nwc_pct_revenue_change": 0.04,
+      "wacc": 0.11,
+      "terminal_growth": 0.025,
+      "base_revenue_musd": 94827.0,
+      "net_debt_musd": -7584.0,
+      "shares_out_musd": 3755.7,
+      "_note": "Financials auto-pulled from SEC EDGAR (2025-12-31) + Yahoo Finance."
+    },
+    "projection": {
+      "revenues": [
+        109051.04999999999,
+        123227.68649999998,
+        136782.732015,
+        149093.17789635,
+        159529.70034909452
+      ],
+      "fcfs": [
+        -3840.4934999999987,
+        -2316.8986083,
+        -323.34944937599994,
+        923.9673547613249,
+        2358.3558879644647
+      ]
+    },
+    "valuation": {
+      "pv_fcfs": [
+        -3459.9040540540527,
+        -1880.44688604821,
+        -236.43033053213907,
+        608.6459156801064,
+        1399.5694337472328
+      ],
+      "sum_pv_fcfs": -3568.5659212070627,
+      "terminal_value": 28438.997472512663,
+      "pv_terminal_value": 16877.16081871663,
+      "enterprise_value": 13308.594897509569,
+      "equity_value": 20892.594897509567,
+      "value_per_share": 5.562903026735247,
+      "pct_ev_from_terminal": 1.2681399463045377,
+      "current_price": 425.3,
+      "upside_pct": -0.9869200493140483
+    },
+    "sensitivity": {
+      "wacc_range": [
+        0.09,
+        0.1,
+        0.11,
+        0.12,
+        0.13
+      ],
+      "terminal_growth_range": [
+        0.015,
+        0.025,
+        0.035
+      ],
+      "grid": [
+        [
+          6.6,
+          7.51,
+          8.76
+        ],
+        [
+          5.73,
+          6.4,
+          7.28
+        ],
+        [
+          5.05,
+          5.56,
+          6.21
+        ],
+        [
+          4.51,
+          4.91,
+          5.4
+        ],
+        [
+          4.07,
+          4.39,
+          4.78
+        ]
+      ]
+    }
+  },
+  {
+    "ticker": "RACE",
+    "name": "Ferrari N.V.",
+    "thesis": "TEST ENTRY - Ferrari's high margins and confirmed 2026 guidance make it a stable comp. Not a final view.",
+    "thesis_author": "user",
+    "assumptions": {
+      "ticker": "RACE",
+      "name": "Ferrari N.V.",
+      "thesis": "TEST ENTRY - Ferrari's high margins and confirmed 2026 guidance make it a stable comp. Not a final view.",
+      "thesis_author": "user",
+      "base_revenue_musd": 8100,
+      "revenue_growth": [
+        0.05,
+        0.06,
+        0.06,
+        0.05,
+        0.05
+      ],
+      "ebitda_margin": [
+        0.39,
+        0.39,
+        0.4,
+        0.4,
+        0.4
+      ],
+      "tax_rate": 0.24,
+      "da_pct_revenue": 0.09,
+      "capex_pct_revenue": 0.1,
+      "nwc_pct_revenue_change": 0.02,
+      "wacc": 0.08,
+      "terminal_growth": 0.03,
+      "net_debt_musd": 2800,
+      "shares_out_musd": 178,
+      "current_price": 465.0,
+      "_note": "Manually entered - Ferrari is a foreign private issuer (20-F filer), auto-fetch couldn't find matching XBRL tags."
+    },
+    "projection": {
+      "revenues": [
+        8505.0,
+        9015.300000000001,
+        9556.218,
+        10034.028900000001,
+        10535.730345000002
+      ],
+      "fcfs": [
+        1845.9900000000002,
+        1955.1294000000003,
+        2145.0644208000003,
+        2254.12070184,
+        2366.8267369320006
+      ]
+    },
+    "valuation": {
+      "pv_fcfs": [
+        1709.25,
+        1676.2083333333335,
+        1702.8212962962964,
+        1656.846007658893,
+        1610.8225074461461
+      ],
+      "sum_pv_fcfs": 8355.94814473467,
+      "terminal_value": 48756.63078079921,
+      "pv_terminal_value": 33182.94365339061,
+      "enterprise_value": 41538.89179812528,
+      "equity_value": 38738.89179812528,
+      "value_per_share": 217.63422358497348,
+      "pct_ev_from_terminal": 0.798840369036716,
+      "current_price": 465.0,
+      "upside_pct": -0.5319694116452183
+    },
+    "sensitivity": {
+      "wacc_range": [
+        0.06,
+        0.07,
+        0.08,
+        0.09,
+        0.1
+      ],
+      "terminal_growth_range": [
+        0.02,
+        0.03,
+        0.04
+      ],
+      "grid": [
+        [
+          287.29,
+          375.05,
+          550.59
+        ],
+        [
+          225.93,
+          276.66,
+          361.19
+        ],
+        [
+          185.06,
+          217.63,
+          266.5
+        ],
+        [
+          155.87,
+          178.3,
+          209.7
+        ],
+        [
+          134.0,
+          150.22,
+          171.84
         ]
       ]
     }
