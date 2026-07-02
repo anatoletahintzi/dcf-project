@@ -19,7 +19,7 @@ PAGE_HEAD = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anatole Tahintzi &mdash; Teardown: Challenger Auto Valuations</title>
+<title>Teardown &mdash; Challenger Auto Valuations | Anatole Tahintzi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -332,8 +332,6 @@ def render_summary_chart(all_results):
 
 
 def build_chart_script(cards_data, summary_rows):
-    """cards_data: list of (chart_id, ticker, years, revenues, fcfs).
-    summary_rows: list of (ticker, upside_pct)."""
     lines = ["<script>"]
     lines.append("Chart.defaults.color = '#7FA3AC';")
     lines.append("Chart.defaults.font.family = \"'Space Mono', monospace\";")
