@@ -1,0 +1,338 @@
+[
+  {
+    "ticker": "STLA",
+    "name": "Stellantis N.V.",
+    "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
+    "thesis_author": "ai_default",
+    "assumptions": {
+      "ticker": "STLA",
+      "name": "Stellantis N.V.",
+      "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
+      "thesis_author": "ai_default",
+      "current_price": 5.805,
+      "revenue_growth": [
+        0.15,
+        0.13,
+        0.11,
+        0.09,
+        0.07
+      ],
+      "ebitda_margin": [
+        0.05,
+        0.07,
+        0.09,
+        0.1,
+        0.11
+      ],
+      "tax_rate": 0.21,
+      "da_pct_revenue": 0.05,
+      "capex_pct_revenue": 0.08,
+      "nwc_pct_revenue_change": 0.04,
+      "wacc": 0.12,
+      "terminal_growth": 0.025,
+      "base_revenue_musd": 180379.1,
+      "net_debt_musd": 17154.2,
+      "shares_out_musd": 2897.5,
+      "_note": "Financials auto-pulled from SEC EDGAR + Yahoo Finance. Assumptions are flat consensus-style defaults - unreviewed."
+    },
+    "projection": {
+      "revenues": [
+        207435.965,
+        234402.64044999998,
+        260186.9308995,
+        283603.754680455,
+        303456.01750808686
+      ],
+      "fcfs": [
+        -7305.353549999999,
+        -4407.184512389999,
+        -615.0725285408023,
+        1757.5627182261233,
+        4486.0441915354395
+      ]
+    },
+    "valuation": {
+      "pv_fcfs": [
+        -6522.637098214284,
+        -3513.3805105149863,
+        -437.79647678799347,
+        1116.9628813630375,
+        2545.5019502176397
+      ],
+      "sum_pv_fcfs": -6811.349253936587,
+      "terminal_value": 48402.05575077711,
+      "pv_terminal_value": 27464.626304979796,
+      "enterprise_value": 20653.27705104321,
+      "equity_value": 3499.0770510432085,
+      "value_per_share": 1.2076193446223324,
+      "pct_ev_from_terminal": 1.3297950846784647,
+      "current_price": 5.805,
+      "upside_pct": -0.791969105146885
+    },
+    "sensitivity": {
+      "wacc_range": [
+        0.1,
+        0.11,
+        0.12,
+        0.13,
+        0.14
+      ],
+      "terminal_growth_range": [
+        0.015,
+        0.025,
+        0.035
+      ],
+      "grid": [
+        [
+          3.23,
+          4.89,
+          7.05
+        ],
+        [
+          1.55,
+          2.82,
+          4.42
+        ],
+        [
+          0.22,
+          1.21,
+          2.43
+        ],
+        [
+          -0.86,
+          -0.07,
+          0.88
+        ],
+        [
+          -1.75,
+          -1.12,
+          -0.36
+        ]
+      ]
+    }
+  },
+  {
+    "ticker": "XPEV",
+    "name": "XPeng Inc.",
+    "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
+    "thesis_author": "ai_default",
+    "assumptions": {
+      "ticker": "XPEV",
+      "name": "XPeng Inc.",
+      "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
+      "thesis_author": "ai_default",
+      "current_price": 13.495,
+      "revenue_growth": [
+        0.15,
+        0.13,
+        0.11,
+        0.09,
+        0.07
+      ],
+      "ebitda_margin": [
+        0.05,
+        0.07,
+        0.09,
+        0.1,
+        0.11
+      ],
+      "tax_rate": 0.21,
+      "da_pct_revenue": 0.05,
+      "capex_pct_revenue": 0.08,
+      "nwc_pct_revenue_change": 0.04,
+      "wacc": 0.12,
+      "terminal_growth": 0.025,
+      "base_revenue_musd": 10000,
+      "net_debt_musd": 0,
+      "shares_out_musd": 1000,
+      "_note": "Financials auto-pulled from SEC EDGAR + Yahoo Finance. Assumptions are flat consensus-style defaults - unreviewed."
+    },
+    "projection": {
+      "revenues": [
+        11500.0,
+        12994.999999999998,
+        14424.449999999999,
+        15722.6505,
+        16823.236035
+      ],
+      "fcfs": [
+        -405.0,
+        -244.3289999999998,
+        -34.09887999999993,
+        97.43715974999989,
+        248.70088560899978
+      ]
+    },
+    "valuation": {
+      "pv_fcfs": [
+        -361.60714285714283,
+        -194.77758290816308,
+        -24.27090925655971,
+        61.92307652954448,
+        141.11956153554576
+      ],
+      "sum_pv_fcfs": -377.61299695677536,
+      "terminal_value": 2683.3516605181553,
+      "pv_terminal_value": 1522.6057955150989,
+      "enterprise_value": 1144.9927985583236,
+      "equity_value": 1144.9927985583236,
+      "value_per_share": 1.1449927985583235,
+      "pct_ev_from_terminal": 1.3297950846784654,
+      "current_price": 13.495,
+      "upside_pct": -0.9151542942898612
+    },
+    "sensitivity": {
+      "wacc_range": [
+        0.1,
+        0.11,
+        0.12,
+        0.13,
+        0.14
+      ],
+      "terminal_growth_range": [
+        0.015,
+        0.025,
+        0.035
+      ],
+      "grid": [
+        [
+          1.47,
+          1.74,
+          2.08
+        ],
+        [
+          1.2,
+          1.4,
+          1.66
+        ],
+        [
+          0.99,
+          1.14,
+          1.34
+        ],
+        [
+          0.81,
+          0.94,
+          1.09
+        ],
+        [
+          0.67,
+          0.77,
+          0.89
+        ]
+      ]
+    }
+  },
+  {
+    "ticker": "F",
+    "name": "Ford Motor Co",
+    "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
+    "thesis_author": "ai_default",
+    "assumptions": {
+      "ticker": "F",
+      "name": "Ford Motor Co",
+      "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
+      "thesis_author": "ai_default",
+      "current_price": 13.835,
+      "revenue_growth": [
+        0.15,
+        0.13,
+        0.11,
+        0.09,
+        0.07
+      ],
+      "ebitda_margin": [
+        0.05,
+        0.07,
+        0.09,
+        0.1,
+        0.11
+      ],
+      "tax_rate": 0.21,
+      "da_pct_revenue": 0.05,
+      "capex_pct_revenue": 0.08,
+      "nwc_pct_revenue_change": 0.04,
+      "wacc": 0.12,
+      "terminal_growth": 0.025,
+      "base_revenue_musd": 187267.0,
+      "net_debt_musd": -17649.0,
+      "shares_out_musd": 1000,
+      "_note": "Financials auto-pulled from SEC EDGAR + Yahoo Finance. Assumptions are flat consensus-style defaults - unreviewed."
+    },
+    "projection": {
+      "revenues": [
+        215357.05,
+        243353.46649999995,
+        270122.347815,
+        294433.35911835,
+        315043.69425663457
+      ],
+      "fcfs": [
+        -7584.3134999999975,
+        -4575.475884299997,
+        -638.559496096002,
+        1824.6764594903275,
+        4657.346874534057
+      ]
+    },
+    "valuation": {
+      "pv_fcfs": [
+        -6771.708482142854,
+        -3647.541361846298,
+        -454.5140363748191,
+        1159.6148772458234,
+        2642.703693007705
+      ],
+      "sum_pv_fcfs": -7071.445310110445,
+      "terminal_value": 50250.32154102535,
+      "pv_terminal_value": 28513.381950872605,
+      "enterprise_value": 21441.93664076216,
+      "equity_value": 39090.93664076216,
+      "value_per_share": 39.09093664076216,
+      "pct_ev_from_terminal": 1.3297950846784654,
+      "current_price": 13.835,
+      "upside_pct": 1.825510418558884
+    },
+    "sensitivity": {
+      "wacc_range": [
+        0.1,
+        0.11,
+        0.12,
+        0.13,
+        0.14
+      ],
+      "terminal_growth_range": [
+        0.015,
+        0.025,
+        0.035
+      ],
+      "grid": [
+        [
+          45.16,
+          50.15,
+          56.68
+        ],
+        [
+          40.13,
+          43.93,
+          48.74
+        ],
+        [
+          36.12,
+          39.09,
+          42.76
+        ],
+        [
+          32.87,
+          35.23,
+          38.1
+        ],
+        [
+          30.18,
+          32.1,
+          34.39
+        ]
+      ]
+    }
+  }
+]

@@ -1,0 +1,95 @@
+[
+  {
+    "ticker": "STLA",
+    "name": "Stellantis N.V.",
+    "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
+    "thesis_author": "ai_default",
+    "current_price": 5.805,
+    "revenue_growth": [
+      0.15,
+      0.13,
+      0.11,
+      0.09,
+      0.07
+    ],
+    "ebitda_margin": [
+      0.05,
+      0.07,
+      0.09,
+      0.1,
+      0.11
+    ],
+    "tax_rate": 0.21,
+    "da_pct_revenue": 0.05,
+    "capex_pct_revenue": 0.08,
+    "nwc_pct_revenue_change": 0.04,
+    "wacc": 0.12,
+    "terminal_growth": 0.025,
+    "base_revenue_musd": 180379.1,
+    "net_debt_musd": 17154.2,
+    "shares_out_musd": 2897.5,
+    "_note": "Financials auto-pulled from SEC EDGAR + Yahoo Finance. Assumptions are flat consensus-style defaults - unreviewed."
+  },
+  {
+    "ticker": "XPEV",
+    "name": "XPeng Inc.",
+    "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
+    "thesis_author": "ai_default",
+    "current_price": 13.495,
+    "revenue_growth": [
+      0.15,
+      0.13,
+      0.11,
+      0.09,
+      0.07
+    ],
+    "ebitda_margin": [
+      0.05,
+      0.07,
+      0.09,
+      0.1,
+      0.11
+    ],
+    "tax_rate": 0.21,
+    "da_pct_revenue": 0.05,
+    "capex_pct_revenue": 0.08,
+    "nwc_pct_revenue_change": 0.04,
+    "wacc": 0.12,
+    "terminal_growth": 0.025,
+    "base_revenue_musd": 10000,
+    "net_debt_musd": 0,
+    "shares_out_musd": 1000,
+    "_note": "Financials auto-pulled from SEC EDGAR + Yahoo Finance. Assumptions are flat consensus-style defaults - unreviewed."
+  },
+  {
+    "ticker": "F",
+    "name": "Ford Motor Co",
+    "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
+    "thesis_author": "ai_default",
+    "current_price": 13.835,
+    "revenue_growth": [
+      0.15,
+      0.13,
+      0.11,
+      0.09,
+      0.07
+    ],
+    "ebitda_margin": [
+      0.05,
+      0.07,
+      0.09,
+      0.1,
+      0.11
+    ],
+    "tax_rate": 0.21,
+    "da_pct_revenue": 0.05,
+    "capex_pct_revenue": 0.08,
+    "nwc_pct_revenue_change": 0.04,
+    "wacc": 0.12,
+    "terminal_growth": 0.025,
+    "base_revenue_musd": 187267.0,
+    "net_debt_musd": -17649.0,
+    "shares_out_musd": 1000,
+    "_note": "Financials auto-pulled from SEC EDGAR + Yahoo Finance. Assumptions are flat consensus-style defaults - unreviewed."
+  }
+]
