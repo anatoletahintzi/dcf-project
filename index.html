@@ -417,7 +417,7 @@
     <div class="fair-value">
       <div class="label">Fair value / share</div>
       <div class="num">$4.67</div>
-      <div class="price-compare">vs current $12.15 &middot; <span style="color:var(--red);">&#9660; 61.6%</span></div>
+      <div class="price-compare">vs current $12.41 &middot; <span style="color:var(--red);">&#9660; 62.4%</span></div>
       <div class="flag ai">AI default &mdash; needs your review</div>
     </div>
   </div>
@@ -443,13 +443,13 @@
 <div class="card">
   <div class="card-head">
     <div class="ticker-block">
-      <div class="ticker">VFS</div>
-      <div class="name">VinFast Auto Ltd.</div>
+      <div class="ticker">XPEV</div>
+      <div class="name">XPeng Inc.</div>
     </div>
     <div class="fair-value">
       <div class="label">Fair value / share</div>
-      <div class="num">$-0.02</div>
-      <div class="price-compare">vs current $3.04 &middot; <span style="color:var(--red);">&#9660; 100.6%</span></div>
+      <div class="num">$1.14</div>
+      <div class="price-compare">vs current $13.18 &middot; <span style="color:var(--red);">&#9660; 91.3%</span></div>
       <div class="flag ai">AI default &mdash; needs your review</div>
     </div>
   </div>
@@ -467,7 +467,7 @@
     <div class="sens-title">Value / share &mdash; WACC (rows) &times; terminal growth (cols)</div>
     <table>
       <tr><th></th><th>1.5%</th><th>2.5%</th><th>3.5%</th></tr>
-      <tr><th>10.0%</th><td class="">$0.12</td><td class="">$0.24</td><td class="">$0.38</td></tr><tr><th>11.0%</th><td class="">$0.01</td><td class="">$0.09</td><td class="">$0.20</td></tr><tr><th>12.0%</th><td class="">$-0.08</td><td class="center-cell">$-0.02</td><td class="">$0.07</td></tr><tr><th>13.0%</th><td class="">$-0.16</td><td class="">$-0.10</td><td class="">$-0.04</td></tr><tr><th>14.0%</th><td class="">$-0.22</td><td class="">$-0.18</td><td class="">$-0.12</td></tr>
+      <tr><th>10.0%</th><td class="">$1.47</td><td class="">$1.74</td><td class="">$2.08</td></tr><tr><th>11.0%</th><td class="">$1.20</td><td class="">$1.40</td><td class="">$1.66</td></tr><tr><th>12.0%</th><td class="">$0.99</td><td class="center-cell">$1.14</td><td class="">$1.34</td></tr><tr><th>13.0%</th><td class="">$0.81</td><td class="">$0.94</td><td class="">$1.09</td></tr><tr><th>14.0%</th><td class="">$0.67</td><td class="">$0.77</td><td class="">$0.89</td></tr>
     </table>
   </div>
 </div>
@@ -480,8 +480,8 @@
     </div>
     <div class="fair-value">
       <div class="label">Fair value / share</div>
-      <div class="num">$1.29</div>
-      <div class="price-compare">vs current $5.56 &middot; <span style="color:var(--red);">&#9660; 76.8%</span></div>
+      <div class="num">$1.25</div>
+      <div class="price-compare">vs current $5.72 &middot; <span style="color:var(--red);">&#9660; 78.2%</span></div>
       <div class="flag ai">AI default &mdash; needs your review</div>
     </div>
   </div>
@@ -499,7 +499,7 @@
     <div class="sens-title">Value / share &mdash; WACC (rows) &times; terminal growth (cols)</div>
     <table>
       <tr><th></th><th>1.5%</th><th>2.5%</th><th>3.5%</th></tr>
-      <tr><th>10.0%</th><td class="">$3.31</td><td class="">$4.97</td><td class="">$7.14</td></tr><tr><th>11.0%</th><td class="">$1.64</td><td class="">$2.90</td><td class="">$4.50</td></tr><tr><th>12.0%</th><td class="">$0.31</td><td class="center-cell">$1.29</td><td class="">$2.51</td></tr><tr><th>13.0%</th><td class="">$-0.78</td><td class="">$0.01</td><td class="">$0.96</td></tr><tr><th>14.0%</th><td class="">$-1.67</td><td class="">$-1.03</td><td class="">$-0.27</td></tr>
+      <tr><th>10.0%</th><td class="">$3.27</td><td class="">$4.92</td><td class="">$7.09</td></tr><tr><th>11.0%</th><td class="">$1.59</td><td class="">$2.86</td><td class="">$4.46</td></tr><tr><th>12.0%</th><td class="">$0.26</td><td class="center-cell">$1.25</td><td class="">$2.47</td></tr><tr><th>13.0%</th><td class="">$-0.82</td><td class="">$-0.03</td><td class="">$0.92</td></tr><tr><th>14.0%</th><td class="">$-1.71</td><td class="">$-1.08</td><td class="">$-0.32</td></tr>
     </table>
   </div>
 </div>
@@ -844,10 +844,10 @@ new Chart(document.getElementById('chart-8'), {
 new Chart(document.getElementById('summary-chart'), {
   type: 'bar',
   data: {
-    labels: ["RIVN", "LCID", "PSNY", "NIO", "TSLA", "RACE", "LI", "VFS", "STLA"],
+    labels: ["RIVN", "LCID", "PSNY", "NIO", "TSLA", "RACE", "LI", "XPEV", "STLA"],
     datasets: [{
       label: 'Upside / downside (%)',
-      data: [-89.3, -466.6, -160.7, -107.2, -98.7, -53.2, -61.6, -100.6, -76.8],
+      data: [-89.3, -466.6, -160.7, -107.2, -98.7, -53.2, -62.4, -91.3, -78.2],
       backgroundColor: ['#E8664B','#E8664B','#E8664B','#E8664B','#E8664B','#E8664B','#E8664B','#E8664B','#E8664B']
     }]
   },

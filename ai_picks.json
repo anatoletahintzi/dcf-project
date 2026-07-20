@@ -4,7 +4,7 @@
     "name": "Li Auto Inc.",
     "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
     "thesis_author": "ai_default",
-    "current_price": 12.155,
+    "current_price": 12.415,
     "revenue_growth": [
       0.15,
       0.13,
@@ -31,11 +31,11 @@
     "_note": "Financials auto-pulled from SEC EDGAR + Yahoo Finance. Assumptions are flat consensus-style defaults - unreviewed."
   },
   {
-    "ticker": "VFS",
-    "name": "VinFast Auto\u00a0Ltd.",
+    "ticker": "XPEV",
+    "name": "XPeng Inc.",
     "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
     "thesis_author": "ai_default",
-    "current_price": 3.045,
+    "current_price": 13.181,
     "revenue_growth": [
       0.15,
       0.13,
@@ -57,8 +57,8 @@
     "wacc": 0.12,
     "terminal_growth": 0.025,
     "base_revenue_musd": 10000,
-    "net_debt_musd": 1184.3,
-    "shares_out_musd": 2338.8,
+    "net_debt_musd": 0,
+    "shares_out_musd": 1000,
     "_note": "Financials auto-pulled from SEC EDGAR + Yahoo Finance. Assumptions are flat consensus-style defaults - unreviewed."
   },
   {
@@ -66,7 +66,7 @@
     "name": "Stellantis N.V.",
     "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
     "thesis_author": "ai_default",
-    "current_price": 5.56,
+    "current_price": 5.72,
     "revenue_growth": [
       0.15,
       0.13,
@@ -88,7 +88,7 @@
     "wacc": 0.12,
     "terminal_growth": 0.025,
     "base_revenue_musd": 180379.1,
-    "net_debt_musd": 16910.7,
+    "net_debt_musd": 17039.3,
     "shares_out_musd": 2897.5,
     "_note": "Financials auto-pulled from SEC EDGAR + Yahoo Finance. Assumptions are flat consensus-style defaults - unreviewed."
   }

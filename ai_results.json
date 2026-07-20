@@ -9,7 +9,7 @@
       "name": "Li Auto Inc.",
       "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
       "thesis_author": "ai_default",
-      "current_price": 12.155,
+      "current_price": 12.415,
       "revenue_growth": [
         0.15,
         0.13,
@@ -66,8 +66,8 @@
       "equity_value": 9473.915684124597,
       "value_per_share": 4.672247218091728,
       "pct_ev_from_terminal": 1.329795084678465,
-      "current_price": 12.155,
-      "upside_pct": -0.6156110885979655
+      "current_price": 12.415,
+      "upside_pct": -0.6236611181561234
     },
     "sensitivity": {
       "wacc_range": [
@@ -112,16 +112,16 @@
     }
   },
   {
-    "ticker": "VFS",
-    "name": "VinFast Auto\u00a0Ltd.",
+    "ticker": "XPEV",
+    "name": "XPeng Inc.",
     "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
     "thesis_author": "ai_default",
     "assumptions": {
-      "ticker": "VFS",
-      "name": "VinFast Auto\u00a0Ltd.",
+      "ticker": "XPEV",
+      "name": "XPeng Inc.",
       "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
       "thesis_author": "ai_default",
-      "current_price": 3.045,
+      "current_price": 13.181,
       "revenue_growth": [
         0.15,
         0.13,
@@ -143,8 +143,8 @@
       "wacc": 0.12,
       "terminal_growth": 0.025,
       "base_revenue_musd": 10000,
-      "net_debt_musd": 1184.3,
-      "shares_out_musd": 2338.8,
+      "net_debt_musd": 0,
+      "shares_out_musd": 1000,
       "_note": "Financials auto-pulled from SEC EDGAR + Yahoo Finance. Assumptions are flat consensus-style defaults - unreviewed."
     },
     "projection": {
@@ -175,11 +175,11 @@
       "terminal_value": 2683.3516605181553,
       "pv_terminal_value": 1522.6057955150989,
       "enterprise_value": 1144.9927985583236,
-      "equity_value": -39.3072014416764,
-      "value_per_share": -0.016806568086914827,
+      "equity_value": 1144.9927985583236,
+      "value_per_share": 1.1449927985583235,
       "pct_ev_from_terminal": 1.3297950846784654,
-      "current_price": 3.045,
-      "upside_pct": -1.0055193983865074
+      "current_price": 13.181,
+      "upside_pct": -0.9131330856112341
     },
     "sensitivity": {
       "wacc_range": [
@@ -196,29 +196,29 @@
       ],
       "grid": [
         [
-          0.12,
-          0.24,
-          0.38
+          1.47,
+          1.74,
+          2.08
         ],
         [
-          0.01,
-          0.09,
-          0.2
+          1.2,
+          1.4,
+          1.66
         ],
         [
-          -0.08,
-          -0.02,
-          0.07
+          0.99,
+          1.14,
+          1.34
         ],
         [
-          -0.16,
-          -0.1,
-          -0.04
+          0.81,
+          0.94,
+          1.09
         ],
         [
-          -0.22,
-          -0.18,
-          -0.12
+          0.67,
+          0.77,
+          0.89
         ]
       ]
     }
@@ -233,7 +233,7 @@
       "name": "Stellantis N.V.",
       "thesis": "AI-generated placeholder using flat consensus-style assumptions. No variant view yet - replace with your own thesis before using this number for anything.",
       "thesis_author": "ai_default",
-      "current_price": 5.56,
+      "current_price": 5.72,
       "revenue_growth": [
         0.15,
         0.13,
@@ -255,7 +255,7 @@
       "wacc": 0.12,
       "terminal_growth": 0.025,
       "base_revenue_musd": 180379.1,
-      "net_debt_musd": 16910.7,
+      "net_debt_musd": 17039.3,
       "shares_out_musd": 2897.5,
       "_note": "Financials auto-pulled from SEC EDGAR + Yahoo Finance. Assumptions are flat consensus-style defaults - unreviewed."
     },
@@ -287,11 +287,11 @@
       "terminal_value": 48402.05575077711,
       "pv_terminal_value": 27464.626304979796,
       "enterprise_value": 20653.27705104321,
-      "equity_value": 3742.5770510432085,
-      "value_per_share": 1.2916573083841962,
+      "equity_value": 3613.97705104321,
+      "value_per_share": 1.2472742195144815,
       "pct_ev_from_terminal": 1.3297950846784647,
-      "current_price": 5.56,
-      "upside_pct": -0.7676875344632741
+      "current_price": 5.72,
+      "upside_pct": -0.7819450665184473
     },
     "sensitivity": {
       "wacc_range": [
@@ -308,29 +308,29 @@
       ],
       "grid": [
         [
-          3.31,
-          4.97,
-          7.14
+          3.27,
+          4.92,
+          7.09
         ],
         [
-          1.64,
-          2.9,
-          4.5
+          1.59,
+          2.86,
+          4.46
         ],
         [
-          0.31,
-          1.29,
-          2.51
+          0.26,
+          1.25,
+          2.47
         ],
         [
-          -0.78,
-          0.01,
-          0.96
+          -0.82,
+          -0.03,
+          0.92
         ],
         [
-          -1.67,
-          -1.03,
-          -0.27
+          -1.71,
+          -1.08,
+          -0.32
         ]
       ]
     }
